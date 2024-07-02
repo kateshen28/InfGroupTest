@@ -4,4 +4,4 @@ Install with the R commands:
 
 install.packages("devtools")
 
-devtools::install_github("kateshen28/Post-LASSO-Inference-Group-Testing")
+devtools::install_github("kateshen28/InfGroupTest")
