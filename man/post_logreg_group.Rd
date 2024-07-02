@@ -48,11 +48,11 @@ p <- 5
 Se <- 0.95
 Sp <- 0.95
 b_true <- c(-5,3,0,1,-2,0) # first is intercept
-X <- cbind(rep(1,n),scale(matrix(rnorm(n*p),nrow=n),T,T))
-pi.true <- as.numeric(logistic(X \%*\% beta_true))
+X <- cbind(rep(1,n),scale(matrix(rnorm(n*p),nrow=n),TRUE,TRUE))
+pi.true <- as.numeric(logistic(X \%*\% b_true))
 Y <- rbinom(n,1,prob = pi.true)
 
-n_groups <- 1000
+n_groups <- 250
 m <- n/n_groups #number of samples within a group
 Z <- c()
 for(j in 1:n_groups){
@@ -60,7 +60,8 @@ for(j in 1:n_groups){
   Z[j] <- rbinom(1,1,prob=Se*maxY+(1-Sp)*(1-maxY))
 }
 
-beta_hat <- EM_group(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3)$beta_hat
-Y.hat <- EM_group(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3)$Y.hat
-post_logreg_group(X,Z,Y.hat,Se,Sp,lambda=5,beta_hat,n_groups, level.alpha = 0.05)
+EM_result <- EM_group(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3, n_groups=250)
+beta_hat <- EM_result$beta_hat
+Y.hat <- EM_result$Y.hat
+post_logreg_group(X,Z,Y.hat,Se,Sp,lambda=5,beta_hat,n_groups,level.alpha = 0.05)
 }

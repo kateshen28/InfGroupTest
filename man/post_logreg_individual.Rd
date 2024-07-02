@@ -30,12 +30,12 @@ p <- 5
 Se <- 0.95
 Sp <- 0.95
 b_true <- c(-5,3,0,1,-2,0) # first is intercept
-X <- cbind(rep(1,n),scale(matrix(rnorm(n*p),nrow=n),T,T))
+X <- cbind(rep(1,n),scale(matrix(rnorm(n*p),nrow=n),TRUE,TRUE))
 
-pi.true <- as.numeric(logistic(X \%*\% beta_true))
+pi.true <- as.numeric(logistic(X \%*\% b_true))
 Y <- rbinom(n,1,logistic(pi.true))
 Z <- rbinom(n,1,prob = Se*Y+(1-Sp)*(1-Y))
 beta_hat <- EM_individial(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3)$beta_hat
 Y.hat <- EM_individial(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3)$Y.hat
-post_logreg_individual(X,Y.hat,lambda,beta_hat,level.alpha = 0.10)
+post_logreg_individual(X,Y.hat,lambda=5,beta_hat,level.alpha = 0.05)
 }

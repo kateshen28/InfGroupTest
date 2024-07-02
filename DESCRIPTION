@@ -8,5 +8,14 @@ Description: Post-LASSO selection adjusted inference for logistic regression und
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Depends: glmnet, MASS, selectiveInference, truncnorm, stats, pracma, ggplot2, dplyr
+Depends: 
+    glmnet,
+    MASS,
+    selectiveInference,
+    truncnorm,
+    stats,
+    pracma,
+    ggplot2,
+    dplyr,
+    R (>= 2.10)
 RoxygenNote: 7.2.3

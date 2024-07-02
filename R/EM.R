@@ -130,7 +130,7 @@ E.Y = function(Se, Sp, pi, Z){
 #'   Z[j] <- rbinom(1,1,prob = Se*maxY+(1-Sp)*(1-maxY))
 #' }
 #'
-#' EM_group(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3)
+#' EM_group(X=X, Z=Z, Se=0.95, Sp=0.95, lambda=5, tol=1e-3, n_groups=250)
 #' @export
 
 EM_group = function(X, Z, Se, Sp, lambda, tol=1e-3, n_groups){

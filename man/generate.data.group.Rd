@@ -25,3 +25,13 @@ A list of covariates X and observed responses Z
 \description{
 Function to generate group testing data
 }
+\examples{
+# generate group testing data
+n <- 1000
+p <- 5
+Se <- 0.95
+Sp <- 0.95
+beta_true <- c(0,3,-2,1,0,0) # first is intercept
+n_groups <- 250
+generate.data.group(n, p, Se, Sp, beta_true, n_groups)
+}
